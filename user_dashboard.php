@@ -11,6 +11,7 @@
 </head>
 
 <body>
+    <!-- Header -->
     <header class="header">
         <!-- Left Section for Logo -->
         <div class="left">
@@ -20,23 +21,71 @@
         <!-- Middle Section for Navigation -->
         <div class="mid">
             <ul class="navbar">
-                <li><a href="#" class="active">Home</a></li>
-                <li><a href="#">About Us</a></li>
-                <li><a href="#">Order List</a></li>
-                <li><a href="#">Contact Us</a></li>
+                <li><a href="#home" class="active">Home</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#products">Product List</a></li>
+                <li><a href="#contact">Contact Us</a></li>
+                <li><a href="cart.php">View Cart 🛒</a></li>
             </ul>
         </div>
 
         <!-- Right Section for Buttons -->
         <div class="right">
-            <button class="btn">Logout</button>
+            <a href="logout.php" class="btn">Logout</a>
         </div>
     </header>
 
-    <!-- Main Content Section -->
-    <div class="container">
-        <h1>Join and Grab Exclusive Baby Products!</h1>
-        <form action="noaction.php">
+    <!-- About Us Section -->
+    <div id="about" class="container">
+        <h1>Welcome to KonkaBabyShop!</h1>
+        <p>Your one-stop shop for exclusive baby products.</p>
+        <h2>About Us</h2>
+        <div class="about-card">
+            <p>
+                At KonkaBabyShop, we believe in providing top-quality products for your little ones.
+                Our store is dedicated to offering a wide range of baby essentials that are safe, reliable, and
+                affordable.
+            </p>
+        </div>
+    </div>
+
+    <!-- Products Section -->
+    <div id="products" class="container">
+        <h2>Our Bestsellers</h2>
+        <div class="product-grid">
+            <?php
+            include 'db_config.php';
+
+            // Fetch products from the database
+            $sql = "SELECT * FROM products";
+            $result = $conn->query($sql);
+
+            if ($result->num_rows > 0) {
+                while ($row = $result->fetch_assoc()) {
+                    echo '
+                        <div class="product">
+                            <img src="uploads/' . $row['image'] . '" alt="' . htmlspecialchars($row['name'], ENT_QUOTES) . '">
+                            <h3>' . htmlspecialchars($row['name'], ENT_QUOTES) . '</h3>
+                            <p>' . number_format($row['price'], 2) . ' Taka</p>
+                            <form method="POST" action="add_to_cart.php">
+                                <input type="hidden" name="product_name" value="' . htmlspecialchars($row['name'], ENT_QUOTES) . '">
+                                <input type="hidden" name="product_price" value="' . $row['price'] . '">
+                                <button type="submit" class="btn">Add to Cart</button>
+                            </form>
+                        </div>
+                    ';
+                }
+            } else {
+                echo "<p>No products found!</p>";
+            }
+            ?>
+        </div>
+    </div>
+
+    <!-- Contact Us Section -->
+    <div id="contact" class="container">
+        <h2>Contact Us</h2>
+        <form action="noaction.php" method="POST">
             <div class="form-group">
                 <input type="text" name="name" placeholder="Enter your name" required>
             </div>

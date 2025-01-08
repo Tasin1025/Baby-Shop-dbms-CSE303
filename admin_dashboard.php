@@ -8,20 +8,28 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $product_price = htmlspecialchars($_POST['product_price']);
     $image = $_FILES['product_image'];
 
+    // Check if the 'uploads' directory exists; if not, create it
+    $upload_dir = 'uploads/';
+    if (!is_dir($upload_dir)) {
+        mkdir($upload_dir, 0755, true);
+    }
+
     if ($image['error'] == 0) {
-        $image_name = basename($image['name']);
-        $image_path = 'uploads/' . $image_name;
+        $image_name = uniqid() . '-' . basename($image['name']); // Add unique prefix to avoid overwriting
+        $image_path = $upload_dir . $image_name;
 
         // Move uploaded file to the 'uploads' directory
         if (move_uploaded_file($image['tmp_name'], $image_path)) {
-            // Insert product into the database
-            $sql = "INSERT INTO products (name, price, image) VALUES ('$product_name', '$product_price', '$image_name')";
+            // Use prepared statements to insert product into the database
+            $stmt = $conn->prepare("INSERT INTO products (name, price, image) VALUES (?, ?, ?)");
+            $stmt->bind_param("sds", $product_name, $product_price, $image_name);
 
-            if ($conn->query($sql)) {
+            if ($stmt->execute()) {
                 echo "<script>alert('Product uploaded successfully!');</script>";
             } else {
                 echo "<script>alert('Error: Unable to upload product.');</script>";
             }
+            $stmt->close();
         } else {
             echo "<script>alert('Error: Unable to upload image.');</script>";
         }
@@ -30,6 +38,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">

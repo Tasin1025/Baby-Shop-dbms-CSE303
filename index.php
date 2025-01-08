@@ -45,9 +45,9 @@
                 while ($row = $result->fetch_assoc()) {
                     echo '
                         <div class="product">
-                            <img src="' . $row['image'] . '" alt="' . $row['name'] . '">
+                            <img src="uploads/' . $row['image'] . '" alt="' . $row['name'] . '">
                             <h3>' . $row['name'] . '</h3>
-                            <p>$' . number_format($row['price'], 2) . '</p>
+                            <p>' . number_format($row['price'], 2) . ' Taka</p>
                         </div>
                     ';
                 }
