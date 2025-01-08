@@ -1,0 +1,127 @@
+/* CSS Reset */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    color: #444;
+    background: url('bg.jpg') no-repeat center center fixed;
+    background-size: cover;
+}
+
+/* Header Styles */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.left img {
+    width: 80px;
+}
+
+.left div {
+    font-family: 'Baloo Bhai', cursive;
+    font-size: 24px;
+    color: #ff6384;
+    margin-top: 10px;
+    text-align: center;
+}
+
+.navbar {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.navbar li {
+    display: inline-block;
+}
+
+.navbar a {
+    text-decoration: none;
+    color: #555;
+    font-weight: 600;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+.navbar a:hover,
+.navbar a.active {
+    background: #ff6384;
+    color: white;
+}
+
+/* Button Styles */
+.btn {
+    background-color: #ff6384;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.btn:hover {
+    background-color: #e05770;
+}
+
+/* Container Styles */
+.container {
+    max-width: 500px;
+    margin: 50px auto;
+    padding: 50px;
+    background: white;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    text-align: center;
+}
+
+.container h1 {
+    font-size: 28px;
+    color: #333;
+    margin-bottom: 20px;
+}
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.form-group select {
+    height: 40px;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    border-color: #ff6384;
+    outline: none;
+}
+
+textarea {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    resize: none;
+    height: 80px;
+}
+
+textarea:focus {
+    border-color: #ff6384;
+    outline: none;
+}
+
+
