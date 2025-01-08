@@ -64,7 +64,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 </select>
             </div>
             <button type="submit" class="btn">Register</button>
+
         </form>
+        <div class="navigation">
+            <button class="btn" onclick="location.href='login.php'">Login</button>
+            <button class="btn" onclick="location.href='index.php'">Home</button>
+        </div>
     </div>
 </body>
 
