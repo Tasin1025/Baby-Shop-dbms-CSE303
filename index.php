@@ -28,6 +28,27 @@
         <button class="btn">Shop Now</button>
     </div>
 
+    <div class="categories">
+        <h2>Featured Categories</h2>
+        <div class="category-grid">
+            <div class="category">
+                <img src="uploads/category1.jpg" alt="Toys" />
+                <h3>Toys</h3>
+                <p>Discover a range of educational and fun toys for kids.</p>
+            </div>
+            <div class="category">
+                <img src="uploads/category2.jpg" alt="Clothing" />
+                <h3>Clothing</h3>
+                <p>Stylish and comfortable baby clothing for all seasons.</p>
+            </div>
+            <div class="category">
+                <img src="uploads/category3.jpg" alt="Feeding" />
+                <h3>Feeding</h3>
+                <p>Essential feeding products to make mealtime a breeze.</p>
+            </div>
+        </div>
+    </div>
+
     <!-- Featured Products Section -->
     <div class="container">
         <h2>Our Bestsellers</h2>
@@ -56,6 +77,23 @@
             }
 
             ?>
+        </div>
+    </div>
+
+    <!-- Testimonials Section -->
+    <div class="testimonials">
+        <h2>What Our Customers Say</h2>
+        <div class="testimonial-cards">
+            <div class="testimonial-card">
+                <p>"I absolutely love the quality of the products! My baby is happy, and I’m a satisfied customer!"</p>
+                <h4>Maryam</h4>
+                <p>Mother of 1</p>
+            </div>
+            <div class="testimonial-card">
+                <p>"Quick delivery and fantastic customer service. The products are exactly as described!"</p>
+                <h4>Ahmed</h4>
+                <p>Father of 2</p>
+            </div>
         </div>
     </div>
 
